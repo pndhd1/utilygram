@@ -2449,7 +2449,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
         }
 
-        if (!LiteMode.isEnabled(LiteMode.FLAGS_CHAT) && cameraView != null && cameraView.isInited()) {
+        if (!isCameraPreviewEnabled() && cameraView != null && cameraView.isInited()) {
             cameraView.showTexture(true, animated);
         }
     }
@@ -2475,7 +2475,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             return;
         }
         if (cameraView == null) {
-            final boolean lazy = !LiteMode.isEnabled(LiteMode.FLAGS_CHAT);
+            final boolean lazy = !isCameraPreviewEnabled();
             cameraView = new CameraView(getContext(), isCameraFrontfaceBeforeEnteringEditMode != null ? isCameraFrontfaceBeforeEnteringEditMode : parentAlert.openWithFrontFaceCamera, lazy) {
 
                 Bulletin.Delegate bulletinDelegate = new Bulletin.Delegate() {
@@ -2925,7 +2925,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
             gridView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_AUTO);
         }
 
-        if (!LiteMode.isEnabled(LiteMode.FLAGS_CHAT) && cameraView != null) {
+        if (!isCameraPreviewEnabled() && cameraView != null) {
             cameraView.showTexture(false, animated);
         }
     }
@@ -4680,5 +4680,9 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                 position[1] = getListTopPadding();
             }
         }
+    }
+
+    private boolean isCameraPreviewEnabled() {
+        return LiteMode.isEnabled(LiteMode.FLAGS_CHAT) && SharedConfig.utilyCameraPreviewEnabled;
     }
 }
