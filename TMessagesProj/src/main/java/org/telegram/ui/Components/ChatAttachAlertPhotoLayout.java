@@ -1023,7 +1023,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
                     }
                 }, hasSpoiler ? 250 : 0);
             } else {
-                if (SharedConfig.inappCamera) {
+                if (SharedConfig.inappCamera && !SharedConfig.utilyUseSystemCamera) {
                     openCamera(true);
                 } else {
                     if (parentAlert.delegate != null) {
