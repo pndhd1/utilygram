@@ -366,6 +366,10 @@ public class SharedConfig {
             -1853602818 // SDM439
     };
 
+    // region Utilygram
+    public static boolean utilyCameraPreviewEnabled = true;
+    // endregion
+
     static {
         loadConfig();
     }
@@ -677,6 +681,10 @@ public class SharedConfig {
 
             preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             showNotificationsForAllAccounts = preferences.getBoolean("AllAccounts", true);
+
+            // Utilygram
+            preferences = ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE);
+            utilyCameraPreviewEnabled = preferences.getBoolean("cameraPreviewEnabled", true);
 
             configLoaded = true;
         }
@@ -1884,6 +1892,13 @@ public class SharedConfig {
         pref.edit().putBoolean("drawActionBarShadow", drawActionBarShadow);
     }
 
-
-
+    //region Utilygram
+    public static void toggleUtilyCameraPreview() {
+        utilyCameraPreviewEnabled = !utilyCameraPreviewEnabled;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("cameraPreviewEnabled", utilyCameraPreviewEnabled)
+                .apply();
+    }
+    //endregion
 }
