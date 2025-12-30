@@ -108,6 +108,10 @@ android {
 
         multiDexEnabled true
 
+        // Telegram API credentials from local.properties
+        buildConfigField "int", "APP_ID", getProps("TELEGRAM_APP_ID") ?: "0"
+        buildConfigField "String", "APP_HASH", "\"${getProps("TELEGRAM_APP_HASH") ?: ""}\""
+
         externalNativeBuild {
             cmake {
                 version '3.10.2'
@@ -224,7 +228,6 @@ def getProps(String propName) {
         return "";
     }
 }
-apply plugin: 'com.google.gms.google-services'
 
 task checkVisibility {
     doFirst {
