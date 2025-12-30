@@ -9,7 +9,19 @@ This is a Utilygram, Telegram for Android client with additional features based 
 Telegram source code.
 The codebase is primarily Java with native C++ components accessed via JNI.
 
-## Additional features
+## Additional Features
+
+### Settings Screen
+- **Path:** `TMessagesProj/src/main/java/org/telegram/ui/UtilygramSettingsActivity.java`
+- **Config:** `TMessagesProj/src/main/java/org/telegram/messenger/SharedConfig.java` (search for `// region Utilygram`)
+- **Strings:** `TMessagesProj/src/main/res/values/strings.xml` (search for `<!--region Utilygram-->`)
+
+### Feature List
+
+| Feature | Setting Field | Description |
+|---------|---------------|-------------|
+| Camera preview toggle | `utilyCameraPreviewEnabled` | Show/hide camera preview in attachments menu |
+| Use system camera | `utilyUseSystemCamera` | Use built-in camera app instead of Telegram's camera (may provide higher quality on some devices) |
 
 ## Build Commands
 
