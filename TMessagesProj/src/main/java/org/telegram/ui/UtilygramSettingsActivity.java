@@ -28,6 +28,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
     private int rowCount;
     private int cameraHeaderRow;
     private int cameraPreviewRow;
+    private int useSystemCameraRow;
 
     @Override
     public boolean onFragmentCreate() {
@@ -39,6 +40,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
         rowCount = 0;
         cameraHeaderRow = rowCount++;
         cameraPreviewRow = rowCount++;
+        useSystemCameraRow = rowCount++;
     }
 
     @Override
@@ -69,6 +71,9 @@ public class UtilygramSettingsActivity extends BaseFragment {
             if (position == cameraPreviewRow) {
                 SharedConfig.toggleUtilyCameraPreview();
                 ((TextCheckCell) view).setChecked(SharedConfig.utilyCameraPreviewEnabled);
+            } else if (position == useSystemCameraRow) {
+                SharedConfig.toggleUtilyUseSystemCamera();
+                ((TextCheckCell) view).setChecked(SharedConfig.utilyUseSystemCamera);
             }
         });
 
@@ -122,6 +127,12 @@ public class UtilygramSettingsActivity extends BaseFragment {
                     cell.setTextAndCheck(
                             LocaleController.getString(R.string.UtilygramCameraPreview),
                             SharedConfig.utilyCameraPreviewEnabled,
+                            true
+                    );
+                } else if (position == useSystemCameraRow) {
+                    cell.setTextAndCheck(
+                            LocaleController.getString(R.string.UtilygramUseSystemCamera),
+                            SharedConfig.utilyUseSystemCamera,
                             false
                     );
                 }

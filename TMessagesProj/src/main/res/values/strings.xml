@@ -10197,5 +10197,6 @@
     <string name="UtilygramSettings">Utilygram Settings</string>
     <string name="UtilygramCameraConfig">Camera</string>
     <string name="UtilygramCameraPreview">Camera preview in attachments</string>
+    <string name="UtilygramUseSystemCamera">Use built-in camera app in attachments</string>
     <!--endregion-->
 </resources>
