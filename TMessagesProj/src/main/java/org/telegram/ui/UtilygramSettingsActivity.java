@@ -130,9 +130,11 @@ public class UtilygramSettingsActivity extends BaseFragment {
                             true
                     );
                 } else if (position == useSystemCameraRow) {
-                    cell.setTextAndCheck(
+                    cell.setTextAndValueAndCheck(
                             LocaleController.getString(R.string.UtilygramUseSystemCamera),
+                            LocaleController.getString(R.string.UtilygramUseSystemCameraInfo),
                             SharedConfig.utilyUseSystemCamera,
+                            true,
                             false
                     );
                 }
