@@ -16,12 +16,11 @@ The codebase is primarily Java with native C++ components accessed via JNI.
 - **Config:** `TMessagesProj/src/main/java/org/telegram/messenger/SharedConfig.java` (search for `// region Utilygram`)
 - **Strings:** `TMessagesProj/src/main/res/values/strings.xml` (search for `<!--region Utilygram-->`)
 
-### Feature List
+### Rules for Adding New Features
+- After implementing a new feature, update [FEATURES.md](FEATURES.md) with the feature description.
 
-| Feature | Setting Field | Description |
-|---------|---------------|-------------|
-| Camera preview toggle | `utilyCameraPreviewEnabled` | Show/hide camera preview in attachments menu |
-| Use system camera | `utilyUseSystemCamera` | Use built-in camera app instead of Telegram's camera (may provide higher quality on some devices) |
+### Feature List
+See [FEATURES.md](FEATURES.md) for the full list of additional features.
 
 ## Build Commands
 

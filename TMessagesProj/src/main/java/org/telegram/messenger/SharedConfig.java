@@ -368,6 +368,7 @@ public class SharedConfig {
 
     // region Utilygram
     public static boolean utilyCameraPreviewEnabled = true;
+    public static boolean utilyCameraBlurPreviewEnabled = true;
     public static boolean utilyUseSystemCamera = false;
     // endregion
 
@@ -686,6 +687,7 @@ public class SharedConfig {
             // Utilygram
             preferences = ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE);
             utilyCameraPreviewEnabled = preferences.getBoolean("cameraPreviewEnabled", true);
+            utilyCameraBlurPreviewEnabled = preferences.getBoolean("cameraBlurPreviewEnabled", true);
             utilyUseSystemCamera = preferences.getBoolean("useSystemCamera", false);
 
             configLoaded = true;
@@ -1900,6 +1902,14 @@ public class SharedConfig {
         ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
                 .edit()
                 .putBoolean("cameraPreviewEnabled", utilyCameraPreviewEnabled)
+                .apply();
+    }
+
+    public static void toggleUtilyCameraBlurPreview() {
+        utilyCameraBlurPreviewEnabled = !utilyCameraBlurPreviewEnabled;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("cameraBlurPreviewEnabled", utilyCameraBlurPreviewEnabled)
                 .apply();
     }
 

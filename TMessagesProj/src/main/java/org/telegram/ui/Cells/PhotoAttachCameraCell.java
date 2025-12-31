@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.R;
+import org.telegram.messenger.SharedConfig;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
 
@@ -78,6 +79,10 @@ public class PhotoAttachCameraCell extends FrameLayout {
     }
 
     public void updateBitmap() {
+        if (!SharedConfig.utilyCameraBlurPreviewEnabled) {
+            backgroundView.setImageResource(R.drawable.icplaceholder);
+            return;
+        }
         Bitmap bitmap = null;
         try {
             File file = new File(ApplicationLoader.getFilesDirFixed(), "cthumb.jpg");
