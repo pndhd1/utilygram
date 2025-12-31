@@ -2696,7 +2696,7 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
     }
 
     private void saveLastCameraBitmap() {
-        if (!canSaveCameraPreview) {
+        if (!canSaveCameraPreview || !SharedConfig.utilyCameraBlurPreviewEnabled) {
             return;
         }
         try {

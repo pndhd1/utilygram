@@ -28,6 +28,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
     private int rowCount;
     private int cameraHeaderRow;
     private int cameraPreviewRow;
+    private int cameraBlurPreviewRow;
     private int useSystemCameraRow;
 
     @Override
@@ -40,6 +41,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
         rowCount = 0;
         cameraHeaderRow = rowCount++;
         cameraPreviewRow = rowCount++;
+        cameraBlurPreviewRow = rowCount++;
         useSystemCameraRow = rowCount++;
     }
 
@@ -71,6 +73,9 @@ public class UtilygramSettingsActivity extends BaseFragment {
             if (position == cameraPreviewRow) {
                 SharedConfig.toggleUtilyCameraPreview();
                 ((TextCheckCell) view).setChecked(SharedConfig.utilyCameraPreviewEnabled);
+            } else if (position == cameraBlurPreviewRow) {
+                SharedConfig.toggleUtilyCameraBlurPreview();
+                ((TextCheckCell) view).setChecked(SharedConfig.utilyCameraBlurPreviewEnabled);
             } else if (position == useSystemCameraRow) {
                 SharedConfig.toggleUtilyUseSystemCamera();
                 ((TextCheckCell) view).setChecked(SharedConfig.utilyUseSystemCamera);
@@ -127,6 +132,14 @@ public class UtilygramSettingsActivity extends BaseFragment {
                     cell.setTextAndCheck(
                             LocaleController.getString(R.string.UtilygramCameraPreview),
                             SharedConfig.utilyCameraPreviewEnabled,
+                            true
+                    );
+                } else if (position == cameraBlurPreviewRow) {
+                    cell.setTextAndValueAndCheck(
+                            LocaleController.getString(R.string.UtilygramCameraBlurPreview),
+                            LocaleController.getString(R.string.UtilygramCameraBlurPreviewInfo),
+                            SharedConfig.utilyCameraBlurPreviewEnabled,
+                            true,
                             true
                     );
                 } else if (position == useSystemCameraRow) {

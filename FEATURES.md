@@ -7,4 +7,5 @@ Additional features available in **Settings → Utilygram Settings**.
 | Feature | Description |
 |---------|-------------|
 | Camera preview toggle | Show or hide camera preview in attachments menu |
+| Blurred camera preview | Show or hide blurred last camera frame in attachments menu |
 | Use system camera | Use device's built-in camera app instead of Telegram's camera. May provide higher quality photos on some devices |
