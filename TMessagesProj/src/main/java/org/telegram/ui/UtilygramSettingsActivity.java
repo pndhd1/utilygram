@@ -30,6 +30,8 @@ public class UtilygramSettingsActivity extends BaseFragment {
     private int cameraPreviewRow;
     private int cameraBlurPreviewRow;
     private int useSystemCameraRow;
+    private int notificationsHeaderRow;
+    private int showNotificationContentWhenLockedRow;
 
     @Override
     public boolean onFragmentCreate() {
@@ -43,6 +45,8 @@ public class UtilygramSettingsActivity extends BaseFragment {
         cameraPreviewRow = rowCount++;
         cameraBlurPreviewRow = rowCount++;
         useSystemCameraRow = rowCount++;
+        notificationsHeaderRow = rowCount++;
+        showNotificationContentWhenLockedRow = rowCount++;
     }
 
     @Override
@@ -79,6 +83,9 @@ public class UtilygramSettingsActivity extends BaseFragment {
             } else if (position == useSystemCameraRow) {
                 SharedConfig.toggleUtilyUseSystemCamera();
                 ((TextCheckCell) view).setChecked(SharedConfig.utilyUseSystemCamera);
+            } else if (position == showNotificationContentWhenLockedRow) {
+                SharedConfig.toggleUtilyShowNotificationContentWhenLocked();
+                ((TextCheckCell) view).setChecked(SharedConfig.utilyShowNotificationContentWhenLocked);
             }
         });
 
@@ -125,6 +132,8 @@ public class UtilygramSettingsActivity extends BaseFragment {
                 HeaderCell cell = (HeaderCell) holder.itemView;
                 if (position == cameraHeaderRow) {
                     cell.setText(LocaleController.getString(R.string.UtilygramCameraConfig));
+                } else if (position == notificationsHeaderRow) {
+                    cell.setText(LocaleController.getString(R.string.UtilygramNotificationsConfig));
                 }
             } else if (viewType == 1) {
                 TextCheckCell cell = (TextCheckCell) holder.itemView;
@@ -148,6 +157,14 @@ public class UtilygramSettingsActivity extends BaseFragment {
                             LocaleController.getString(R.string.UtilygramUseSystemCameraInfo),
                             SharedConfig.utilyUseSystemCamera,
                             true,
+                            true
+                    );
+                } else if (position == showNotificationContentWhenLockedRow) {
+                    cell.setTextAndValueAndCheck(
+                            LocaleController.getString(R.string.UtilygramShowNotificationContentWhenLocked),
+                            LocaleController.getString(R.string.UtilygramShowNotificationContentWhenLockedInfo),
+                            SharedConfig.utilyShowNotificationContentWhenLocked,
+                            true,
                             false
                     );
                 }
@@ -156,7 +173,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (position == cameraHeaderRow) {
+            if (position == cameraHeaderRow || position == notificationsHeaderRow) {
                 return 0;
             } else {
                 return 1;
