@@ -1758,7 +1758,7 @@ public class NotificationsController extends BaseController {
     }
 
     private String getShortStringForMessage(MessageObject messageObject, String[] userName, boolean[] preview) {
-        if (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) {
+        if ((AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) && !SharedConfig.utilyShowNotificationContentWhenLocked) {
             return LocaleController.getString(R.string.NotificationHiddenMessage);
         }
         long dialogId = messageObject.messageOwner.dialog_id;
@@ -2441,7 +2441,7 @@ public class NotificationsController extends BaseController {
     }
 
     private String getStringForMessage(MessageObject messageObject, boolean shortMessage, boolean[] text, boolean[] preview) {
-        if (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) {
+        if ((AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) && !SharedConfig.utilyShowNotificationContentWhenLocked) {
             return LocaleController.getString(R.string.YouHaveNewMessage);
         }
         if (messageObject.isStoryPush || messageObject.isStoryMentionPush) {
@@ -4174,7 +4174,7 @@ public class NotificationsController extends BaseController {
             } else {
                 chatName = UserObject.getUserName(user);
             }
-            boolean passcode = AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter;
+            boolean passcode = (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) && !SharedConfig.utilyShowNotificationContentWhenLocked;
             final boolean allowSummary = !"samsung".equalsIgnoreCase(Build.MANUFACTURER);
             if (DialogObject.isEncryptedDialog(dialog_id) || allowSummary && pushDialogs.size() > 1 || passcode) {
                 if (passcode) {
@@ -4485,7 +4485,7 @@ public class NotificationsController extends BaseController {
                         intent.putExtra("userId", userId);
                     }
                 }
-                if (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) {
+                if ((AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) && !SharedConfig.utilyShowNotificationContentWhenLocked) {
                     photoPath = null;
                 } else {
                     if (pushDialogs.size() == 1 && Build.VERSION.SDK_INT < 28) {
@@ -4836,7 +4836,7 @@ public class NotificationsController extends BaseController {
         }
 
         long selfUserId = getUserConfig().getClientUserId();
-        boolean waitingForPasscode = AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter;
+        boolean waitingForPasscode = (AndroidUtilities.needShowPasscode() || SharedConfig.isWaitingForPasscodeEnter) && !SharedConfig.utilyShowNotificationContentWhenLocked;
         boolean passcode = SharedConfig.passcodeHash.length() > 0;
         FileLog.d("showExtraNotifications: passcode="+passcode+" waitingForPasscode=" + waitingForPasscode + " selfUserId=" + selfUserId + " useSummaryNotification=" + useSummaryNotification);
 

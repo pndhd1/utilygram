@@ -10201,5 +10201,8 @@
     <string name="UtilygramCameraBlurPreviewInfo">Show blurred last camera frame in attachments</string>
     <string name="UtilygramUseSystemCamera">Use built-in camera app in attachments</string>
     <string name="UtilygramUseSystemCameraInfo">May provide higher photo quality on some devices</string>
+    <string name="UtilygramNotificationsConfig">Notifications</string>
+    <string name="UtilygramShowNotificationContentWhenLocked">Show message content when locked</string>
+    <string name="UtilygramShowNotificationContentWhenLockedInfo">Display original notification text even when app is locked with passcode</string>
     <!--endregion-->
 </resources>

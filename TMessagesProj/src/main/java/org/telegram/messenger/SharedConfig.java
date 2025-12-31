@@ -370,6 +370,7 @@ public class SharedConfig {
     public static boolean utilyCameraPreviewEnabled = true;
     public static boolean utilyCameraBlurPreviewEnabled = true;
     public static boolean utilyUseSystemCamera = false;
+    public static boolean utilyShowNotificationContentWhenLocked = false;
     // endregion
 
     static {
@@ -689,6 +690,7 @@ public class SharedConfig {
             utilyCameraPreviewEnabled = preferences.getBoolean("cameraPreviewEnabled", true);
             utilyCameraBlurPreviewEnabled = preferences.getBoolean("cameraBlurPreviewEnabled", true);
             utilyUseSystemCamera = preferences.getBoolean("useSystemCamera", false);
+            utilyShowNotificationContentWhenLocked = preferences.getBoolean("showNotificationContentWhenLocked", false);
 
             configLoaded = true;
         }
@@ -1918,6 +1920,14 @@ public class SharedConfig {
         ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
                 .edit()
                 .putBoolean("useSystemCamera", utilyUseSystemCamera)
+                .apply();
+    }
+
+    public static void toggleUtilyShowNotificationContentWhenLocked() {
+        utilyShowNotificationContentWhenLocked = !utilyShowNotificationContentWhenLocked;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("showNotificationContentWhenLocked", utilyShowNotificationContentWhenLocked)
                 .apply();
     }
     //endregion
