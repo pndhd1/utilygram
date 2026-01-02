@@ -9,7 +9,18 @@ This is a Utilygram, Telegram for Android client with additional features based 
 Telegram source code.
 The codebase is primarily Java with native C++ components accessed via JNI.
 
-## Additional features
+## Additional Features
+
+### Settings Screen
+- **Path:** `TMessagesProj/src/main/java/org/telegram/ui/UtilygramSettingsActivity.java`
+- **Config:** `TMessagesProj/src/main/java/org/telegram/messenger/SharedConfig.java` (search for `// region Utilygram`)
+- **Strings:** `TMessagesProj/src/main/res/values/strings.xml` (search for `<!--region Utilygram-->`)
+
+### Rules for Adding New Features
+- After implementing a new feature, update [FEATURES.md](FEATURES.md) with the feature description.
+
+### Feature List
+See [FEATURES.md](FEATURES.md) for the full list of additional features.
 
 ## Build Commands
 

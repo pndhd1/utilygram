@@ -366,6 +366,13 @@ public class SharedConfig {
             -1853602818 // SDM439
     };
 
+    // region Utilygram
+    public static boolean utilyCameraPreviewEnabled = true;
+    public static boolean utilyCameraBlurPreviewEnabled = true;
+    public static boolean utilyUseSystemCamera = false;
+    public static boolean utilyShowNotificationContentWhenLocked = false;
+    // endregion
+
     static {
         loadConfig();
     }
@@ -677,6 +684,13 @@ public class SharedConfig {
 
             preferences = ApplicationLoader.applicationContext.getSharedPreferences("Notifications", Activity.MODE_PRIVATE);
             showNotificationsForAllAccounts = preferences.getBoolean("AllAccounts", true);
+
+            // Utilygram
+            preferences = ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE);
+            utilyCameraPreviewEnabled = preferences.getBoolean("cameraPreviewEnabled", true);
+            utilyCameraBlurPreviewEnabled = preferences.getBoolean("cameraBlurPreviewEnabled", true);
+            utilyUseSystemCamera = preferences.getBoolean("useSystemCamera", false);
+            utilyShowNotificationContentWhenLocked = preferences.getBoolean("showNotificationContentWhenLocked", false);
 
             configLoaded = true;
         }
@@ -1884,6 +1898,37 @@ public class SharedConfig {
         pref.edit().putBoolean("drawActionBarShadow", drawActionBarShadow);
     }
 
+    //region Utilygram
+    public static void toggleUtilyCameraPreview() {
+        utilyCameraPreviewEnabled = !utilyCameraPreviewEnabled;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("cameraPreviewEnabled", utilyCameraPreviewEnabled)
+                .apply();
+    }
 
+    public static void toggleUtilyCameraBlurPreview() {
+        utilyCameraBlurPreviewEnabled = !utilyCameraBlurPreviewEnabled;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("cameraBlurPreviewEnabled", utilyCameraBlurPreviewEnabled)
+                .apply();
+    }
 
+    public static void toggleUtilyUseSystemCamera() {
+        utilyUseSystemCamera = !utilyUseSystemCamera;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("useSystemCamera", utilyUseSystemCamera)
+                .apply();
+    }
+
+    public static void toggleUtilyShowNotificationContentWhenLocked() {
+        utilyShowNotificationContentWhenLocked = !utilyShowNotificationContentWhenLocked;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("showNotificationContentWhenLocked", utilyShowNotificationContentWhenLocked)
+                .apply();
+    }
+    //endregion
 }

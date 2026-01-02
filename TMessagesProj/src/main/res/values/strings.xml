@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram Beta</string>
+    <string name="AppName">Utilygram</string>
+    <string name="AppNameBeta">Utilygram Beta</string>
     <string name="LanguageName">English</string>
     <string name="English">English</string>
     <string name="LanguageNameInEnglish">English</string>
@@ -2510,7 +2510,7 @@
     <string name="DirectShareInfo">Show recent chats in Android share menu</string>
     <string name="Emoji">Emoji</string>
     <string name="LargeEmoji">Large Emoji</string>
-    <string name="TelegramVersion">Telegram for Android %1$s</string>
+    <string name="TelegramVersion">Utilygram for Android %1$s</string>
     <string name="DebugMenu">Debug Menu</string>
     <string name="DebugMenuLongPress">Long press again for debug menu</string>
     <string name="DebugSendLogs">Send Logs</string>
@@ -10192,4 +10192,17 @@
     <string name="GiftAuctionWearInfo2Text">Your profile page will get the color and the symbol of this item.</string>
     <string name="GiftAuctionWearInfo3Header">Proof of Ownership</string>
     <string name="GiftAuctionWearInfo3Text">Tapping the icon of this item next to your name will show its info and owner.</string>
+
+    <!--region Utilygram-->
+    <string name="UtilygramSettings">Utilygram Settings</string>
+    <string name="UtilygramCameraConfig">Camera</string>
+    <string name="UtilygramCameraPreview">Camera preview in attachments</string>
+    <string name="UtilygramCameraBlurPreview">Blurred camera preview</string>
+    <string name="UtilygramCameraBlurPreviewInfo">Show blurred last camera frame in attachments</string>
+    <string name="UtilygramUseSystemCamera">Use built-in camera app in attachments</string>
+    <string name="UtilygramUseSystemCameraInfo">May provide higher photo quality on some devices</string>
+    <string name="UtilygramNotificationsConfig">Notifications</string>
+    <string name="UtilygramShowNotificationContentWhenLocked">Show message content when locked</string>
+    <string name="UtilygramShowNotificationContentWhenLockedInfo">Display original notification text even when app is locked with passcode</string>
+    <!--endregion-->
 </resources>
