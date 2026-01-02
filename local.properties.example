@@ -6,12 +6,7 @@ sdk.dir=/path/to/your/Android/Sdk
 TELEGRAM_APP_ID=0
 TELEGRAM_APP_HASH=
 
-# Optional: App Center hashes (for beta distribution)
-#APP_CENTER_HASH_PRIVATE=
-#APP_CENTER_HASH_PUBLIC=
-#APP_CENTER_HASH_HARDCORE=
-
-# Optional: Beta URLs
-#BETA_PRIVATE_URL=
-#BETA_PUBLIC_URL=
-#BETA_HARDCORE_URL=
+# Release signing configuration
+RELEASE_KEY_PASSWORD=
+RELEASE_KEY_ALIAS=
+RELEASE_STORE_PASSWORD=
