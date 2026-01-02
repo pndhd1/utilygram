@@ -8,7 +8,6 @@
 
 package org.telegram.messenger;
 
-import static org.telegram.messenger.LocaleController.formatString;
 import static org.telegram.messenger.LocaleController.getString;
 
 import android.Manifest;
@@ -6681,7 +6680,7 @@ public class AndroidUtilities {
                     }
                     break;
             }
-            return formatString("TelegramVersion", R.string.TelegramVersion, String.format(Locale.US, "v%s (%d) %s", pInfo.versionName, code, abi));
+            return ApplicationLoader.applicationContext.getString(R.string.TelegramVersion, String.format(Locale.US, "v%s (%d) %s", pInfo.versionName, code, abi));
         } catch (Exception e) {
             FileLog.e(e);
         }
