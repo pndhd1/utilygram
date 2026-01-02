@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def getLocalProps(String propName) {
+    return rootProject.ext.localProps[propName] ?: ""
+}
+
 repositories {
     mavenCentral()
     google()
@@ -46,16 +50,16 @@ android {
     signingConfigs {
         debug {
             storeFile file("../TMessagesProj/config/release.keystore")
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
+            storePassword getLocalProps("RELEASE_STORE_PASSWORD")
+            keyAlias getLocalProps("RELEASE_KEY_ALIAS")
+            keyPassword getLocalProps("RELEASE_KEY_PASSWORD")
         }
 
         release {
             storeFile file("../TMessagesProj/config/release.keystore")
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
+            storePassword getLocalProps("RELEASE_STORE_PASSWORD")
+            keyAlias getLocalProps("RELEASE_KEY_ALIAS")
+            keyPassword getLocalProps("RELEASE_KEY_PASSWORD")
         }
     }
 

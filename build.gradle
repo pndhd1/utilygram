@@ -1,4 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+ext.localProps = new Properties()
+file("${rootProject.projectDir}/local.properties").with { if (it.exists()) ext.localProps.load(it.newInputStream()) }
+
 buildscript {
     repositories {
         mavenCentral()
