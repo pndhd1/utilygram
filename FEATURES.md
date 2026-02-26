@@ -2,6 +2,12 @@
 
 Additional features available in **Settings → Utilygram Settings**.
 
+## Emoji
+
+| Feature | Description |
+|---------|-------------|
+| Prioritize static emoji in search | Show non-animated emoji first in search results, pushing animated/premium emoji below |
+
 ## Camera
 
 | Feature | Description |

@@ -10400,6 +10400,9 @@
 
     <!--region Utilygram-->
     <string name="UtilygramSettings">Utilygram Settings</string>
+    <string name="UtilygramEmojiConfig">Emoji</string>
+    <string name="UtilygramPrioritizeStaticEmoji">Prioritize static emoji in search</string>
+    <string name="UtilygramPrioritizeStaticEmojiInfo">Show non-animated emoji first in search results</string>
     <string name="UtilygramCameraConfig">Camera</string>
     <string name="UtilygramCameraPreview">Camera preview in attachments</string>
     <string name="UtilygramCameraBlurPreview">Blurred camera preview</string>

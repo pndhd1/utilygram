@@ -373,6 +373,7 @@ public class SharedConfig {
     public static boolean utilyCameraBlurPreviewEnabled = true;
     public static boolean utilyUseSystemCamera = false;
     public static boolean utilyShowNotificationContentWhenLocked = false;
+    public static boolean utilyPrioritizeStaticEmoji = true;
     // endregion
 
     static {
@@ -695,6 +696,7 @@ public class SharedConfig {
             utilyCameraBlurPreviewEnabled = preferences.getBoolean("cameraBlurPreviewEnabled", true);
             utilyUseSystemCamera = preferences.getBoolean("useSystemCamera", false);
             utilyShowNotificationContentWhenLocked = preferences.getBoolean("showNotificationContentWhenLocked", false);
+            utilyPrioritizeStaticEmoji = preferences.getBoolean("prioritizeStaticEmoji", true);
 
             configLoaded = true;
         }
@@ -1940,6 +1942,14 @@ public class SharedConfig {
         ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
                 .edit()
                 .putBoolean("showNotificationContentWhenLocked", utilyShowNotificationContentWhenLocked)
+                .apply();
+    }
+
+    public static void toggleUtilyPrioritizeStaticEmoji() {
+        utilyPrioritizeStaticEmoji = !utilyPrioritizeStaticEmoji;
+        ApplicationLoader.applicationContext.getSharedPreferences("utilyconfig", Activity.MODE_PRIVATE)
+                .edit()
+                .putBoolean("prioritizeStaticEmoji", utilyPrioritizeStaticEmoji)
                 .apply();
     }
     //endregion

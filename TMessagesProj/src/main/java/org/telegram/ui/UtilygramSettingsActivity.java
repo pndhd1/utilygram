@@ -26,6 +26,8 @@ public class UtilygramSettingsActivity extends BaseFragment {
     private ListAdapter adapter;
 
     private int rowCount;
+    private int emojiHeaderRow;
+    private int prioritizeStaticEmojiRow;
     private int cameraHeaderRow;
     private int cameraPreviewRow;
     private int cameraBlurPreviewRow;
@@ -41,6 +43,8 @@ public class UtilygramSettingsActivity extends BaseFragment {
 
     private void updateRows() {
         rowCount = 0;
+        emojiHeaderRow = rowCount++;
+        prioritizeStaticEmojiRow = rowCount++;
         cameraHeaderRow = rowCount++;
         cameraPreviewRow = rowCount++;
         cameraBlurPreviewRow = rowCount++;
@@ -74,7 +78,10 @@ public class UtilygramSettingsActivity extends BaseFragment {
         frameLayout.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         listView.setOnItemClickListener((view, position) -> {
-            if (position == cameraPreviewRow) {
+            if (position == prioritizeStaticEmojiRow) {
+                SharedConfig.toggleUtilyPrioritizeStaticEmoji();
+                ((TextCheckCell) view).setChecked(SharedConfig.utilyPrioritizeStaticEmoji);
+            } else if (position == cameraPreviewRow) {
                 SharedConfig.toggleUtilyCameraPreview();
                 ((TextCheckCell) view).setChecked(SharedConfig.utilyCameraPreviewEnabled);
             } else if (position == cameraBlurPreviewRow) {
@@ -130,14 +137,24 @@ public class UtilygramSettingsActivity extends BaseFragment {
             int viewType = holder.getItemViewType();
             if (viewType == 0) {
                 HeaderCell cell = (HeaderCell) holder.itemView;
-                if (position == cameraHeaderRow) {
+                if (position == emojiHeaderRow) {
+                    cell.setText(LocaleController.getString(R.string.UtilygramEmojiConfig));
+                } else if (position == cameraHeaderRow) {
                     cell.setText(LocaleController.getString(R.string.UtilygramCameraConfig));
                 } else if (position == notificationsHeaderRow) {
                     cell.setText(LocaleController.getString(R.string.UtilygramNotificationsConfig));
                 }
             } else if (viewType == 1) {
                 TextCheckCell cell = (TextCheckCell) holder.itemView;
-                if (position == cameraPreviewRow) {
+                if (position == prioritizeStaticEmojiRow) {
+                    cell.setTextAndValueAndCheck(
+                            LocaleController.getString(R.string.UtilygramPrioritizeStaticEmoji),
+                            LocaleController.getString(R.string.UtilygramPrioritizeStaticEmojiInfo),
+                            SharedConfig.utilyPrioritizeStaticEmoji,
+                            true,
+                            false
+                    );
+                } else if (position == cameraPreviewRow) {
                     cell.setTextAndCheck(
                             LocaleController.getString(R.string.UtilygramCameraPreview),
                             SharedConfig.utilyCameraPreviewEnabled,
@@ -173,7 +190,7 @@ public class UtilygramSettingsActivity extends BaseFragment {
 
         @Override
         public int getItemViewType(int position) {
-            if (position == cameraHeaderRow || position == notificationsHeaderRow) {
+            if (position == emojiHeaderRow || position == cameraHeaderRow || position == notificationsHeaderRow) {
                 return 0;
             } else {
                 return 1;
