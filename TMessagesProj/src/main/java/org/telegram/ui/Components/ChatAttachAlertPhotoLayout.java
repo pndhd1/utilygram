@@ -4784,6 +4784,15 @@ public class ChatAttachAlertPhotoLayout extends ChatAttachAlert.AttachAlertLayou
 
 
         public void updateBitmap() {
+            // region Utilygram
+            if (!SharedConfig.utilyCameraBlurPreviewEnabled) {
+                placeholderDrawable = getContext().getResources().getDrawable(R.drawable.icplaceholder).mutate();
+                if (gridView != null) {
+                    gridView.invalidate();
+                }
+                return;
+            }
+            // endregion Utilygram
             Bitmap bitmap = null;
             try {
                 File file = new File(ApplicationLoader.getFilesDirFixed(), "cthumb.jpg");
