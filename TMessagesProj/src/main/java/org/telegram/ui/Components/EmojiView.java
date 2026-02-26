@@ -8004,6 +8004,18 @@ public class EmojiView extends FrameLayout implements NotificationCenter.Notific
                                 if (emojiGridView.getAdapter() != emojiSearchAdapter) {
                                     emojiGridView.setAdapter(emojiSearchAdapter);
                                 }
+                                // region Utilygram
+                                if (SharedConfig.utilyPrioritizeStaticEmoji) {
+                                    Collections.sort(searchResult, (a, b) -> {
+                                        boolean aAnimated = a.emoji != null && a.emoji.startsWith("animated_");
+                                        boolean bAnimated = b.emoji != null && b.emoji.startsWith("animated_");
+                                        if (aAnimated != bAnimated) {
+                                            return aAnimated ? 1 : -1;
+                                        }
+                                        return 0;
+                                    });
+                                }
+                                // endregion
                                 result.clear();
                                 result.addAll(searchResult);
                                 packs.clear();
